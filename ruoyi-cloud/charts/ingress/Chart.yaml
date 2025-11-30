@@ -1,0 +1,6 @@
+apiVersion: v2
+name: ingress
+description: RuoYi Ingress Configuration
+type: application
+version: 1.0.0
+appVersion: "1.0"

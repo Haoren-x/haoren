@@ -1,0 +1,23 @@
+# Auth Service Configuration
+name: "ruoyi-auth"
+svcname: "ruoyi-auth"
+image: "192.168.200.85:85/library/ruoyi-auth:1"
+replicaCount: 2
+port: 9200
+
+# JVM Configuration
+javaOpts: "-Xms768m -Xmx768m -XX:MaxMetaspaceSize=192m"
+
+# Resource limits
+resources:
+  requests:
+    memory: "1280Mi"
+    cpu: "1000m"
+  limits:
+    memory: "1280Mi"
+    cpu: "1000m"
+
+# Global Configuration
+global:
+  nacos:
+    serverAddr: ""

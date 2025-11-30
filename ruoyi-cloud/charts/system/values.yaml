@@ -1,0 +1,23 @@
+# System Service Configuration
+name: "ruoyi-system"
+svcname: "ruoyi-system"
+image: "192.168.200.85:85/library/ruoyi-system:1"
+replicaCount: 2
+port: 9201
+
+# JVM Configuration
+javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+
+# Resource limits
+resources:
+  requests:
+    memory: "1024Mi"
+    cpu: "800m"
+  limits:
+    memory: "1024Mi"
+    cpu: "800m"
+
+# Global Configuration
+global:
+  nacos:
+    serverAddr: ""

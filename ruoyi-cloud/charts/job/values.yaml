@@ -1,0 +1,15 @@
+# Job Service Configuration
+name: "ruoyi-job"
+svcname: "ruoyi-job"
+image: "192.168.200.85:85/library/ruoyi-job:1"
+replicaCount: 2
+port: 9203
+
+# JVM Configuration
+javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+
+# Resource limits
+resources:
+  requests:
+    memory: "512Mi"
+    cpu: "300m"

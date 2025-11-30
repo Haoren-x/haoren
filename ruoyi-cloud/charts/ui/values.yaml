@@ -1,0 +1,7 @@
+# UI Service Configuration
+name: "ruoyi-ui"
+svcname: "ruoyi-ui"
+svctype: "NodePort"
+image: "192.168.200.85:85/library/ruoyi-ui:1"
+replicaCount: 1
+port: 80

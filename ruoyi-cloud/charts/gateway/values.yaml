@@ -1,0 +1,23 @@
+# Gateway Service Configuration
+name: "ruoyi-gateway"
+svcname: "ruoyi-gateway"
+image: "192.168.200.85:85/library/ruoyi-gateway:1"
+replicaCount: 2
+port: 8080
+
+# JVM Configuration
+javaOpts: "-Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m"
+
+# Resource limits
+resources:
+  requests:
+    memory: "1536Mi"
+    cpu: "1500m"
+  limits:
+    memory: "1536Mi"
+    cpu: "1500m"
+
+# Global Configuration
+global:
+  nacos:
+    serverAddr: ""

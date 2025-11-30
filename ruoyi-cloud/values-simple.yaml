@@ -1,0 +1,98 @@
+# 全局配置
+fullnameOverride: "ruoyi-cloud"
+
+# Nacos配置
+global:
+  nacos:
+    serverAddr: "192.168.200.11:8848"
+
+# Ingress Configuration false/true
+ingress:
+  enabled: true
+  className: "nginx"
+  host: "www.xushi3589.top"
+  secret: "aly-secret"
+  path: "/"
+  ui:
+    svcname: "ruoyi-ui"
+    port: 80
+
+# UI服务
+ui:
+  name: "ruoyi-ui"
+  image: "192.168.200.85:85/library/ruoyi-ui:1"
+  port: 80
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# Gateway服务
+gateway:
+  name: "ruoyi-gateway"
+  image: "192.168.200.85:85/library/ruoyi-gateway:1"
+  port: 8080
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# Auth服务
+auth:
+  name: "ruoyi-auth"
+  image: "192.168.200.85:85/library/ruoyi-auth:1"
+  port: 8090
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# System服务
+system:
+  name: "ruoyi-system"
+  image: "192.168.200.85:85/library/ruoyi-system:1"
+  port: 8081
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# File服务
+file:
+  enabled: true
+  name: "ruoyi-file"
+  image: "192.168.200.85:85/library/ruoyi-file:1"
+  port: 8082
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# Gen服务
+gen:
+  enabled: false
+  name: "ruoyi-gen"
+  image: "192.168.200.85:85/library/ruoyi-gen:1"
+  port: 8083
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false
+
+# Job服务
+job:
+  enabled: false
+  name: "ruoyi-job"
+  image: "192.168.200.85:85/library/ruoyi-job:1"
+  port: 8084
+  replicaCount: 1
+  probes:
+    enabled: false
+  resources:
+    enabled: false

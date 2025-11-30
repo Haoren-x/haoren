@@ -1,0 +1,294 @@
+# 全局配置
+fullnameOverride: "ruoyi-cloud"
+
+# Nacos配置
+global:
+  nacos:
+    serverAddr: "192.168.200.11:8848"
+
+# 子Chart配置
+
+# UI Service Configuration NodePort/ClusterIP
+ui:
+  name: "ruoyi-ui"
+  svcname: "ruoyi-ui"
+  svctype: "ClusterIP"
+  image: "192.168.200.85:85/library/ruoyi-ui:1"
+  replicaCount: 1
+  port: 80
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /
+      initialDelay: 30
+      period: 10
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /
+      initialDelay: 15
+      period: 5
+      timeout: 3
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /
+      failureThreshold: 10
+      period: 5
+  # 资源限制配置
+  resources:
+    enabled: true
+    requests:
+      memory: "512Mi"
+      cpu: "500m"
+    limits:
+      memory: "1024Mi"
+      cpu: "1000m"
+
+# Ingress Configuration false/true
+ingress:
+  enabled: true
+  className: "nginx"
+  host: "www.xushi3589.top"
+  secret: "aly-secret"
+  path: "/"
+  ui:
+    svcname: "ruoyi-ui"
+    port: 80
+
+# Gateway Service Configuration
+gateway:
+  name: "ruoyi-gateway"
+  svcname: "ruoyi-gateway"
+  image: "192.168.200.85:85/library/ruoyi-gateway:1"
+  replicaCount: 1
+  port: 8080
+  javaOpts: "-Xms1024m -Xmx1024m -XX:MaxMetaspaceSize=256m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  resources:
+    enabled: true
+    requests:
+      memory: "1536Mi"
+      cpu: "1500m"
+    limits:
+      memory: "1536Mi"
+      cpu: "1500m"
+
+# Auth Service Configuration
+auth:
+  name: "ruoyi-auth"
+  svcname: "ruoyi-auth"
+  image: "192.168.200.85:85/library/ruoyi-auth:1"
+  replicaCount: 1
+  port: 9200
+  javaOpts: "-Xms768m -Xmx768m -XX:MaxMetaspaceSize=192m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  resources:
+    enabled: true
+    requests:
+      memory: "1280Mi"
+      cpu: "1000m"
+    limits:
+      memory: "1280Mi"
+      cpu: "1000m"
+
+# System Service Configuration
+system:
+  name: "ruoyi-system"
+  svcname: "ruoyi-system"
+  image: "192.168.200.85:85/library/ruoyi-system:1"
+  replicaCount: 1
+  port: 9201
+  javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  resources:
+    enabled: true
+    requests:
+      memory: "1024Mi"
+      cpu: "800m"
+    limits:
+      memory: "1024Mi"
+      cpu: "800m"
+
+# File Service Configuration
+file:
+  enabled: true
+  name: "ruoyi-file"
+  svcname: "ruoyi-file"
+  image: "192.168.200.85:85/library/ruoyi-file:1"
+  replicaCount: 1
+  port: 9300
+  javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  resources:
+    enabled: true
+    requests:
+      memory: "1024Mi"
+      cpu: "800m"
+    limits:
+      memory: "2048Mi"
+      cpu: "2000m"
+
+# Gen Service Configuration
+gen:
+  enabled: false
+  name: "ruoyi-gen"
+  svcname: "ruoyi-gen"
+  image: "192.168.200.85:85/library/ruoyi-gen:1"
+  replicaCount: 1
+  port: 9202
+  javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  # 资源限制配置
+  resources:
+    enabled: true
+    requests:
+      memory: "512Mi"
+      cpu: "300m"
+    limits:
+      memory: "1024Mi"
+      cpu: "1000m"
+
+# Job Service Configuration
+job:
+  enabled: false
+  name: "ruoyi-job"
+  svcname: "ruoyi-job"
+  image: "192.168.200.85:85/library/ruoyi-job:1"
+  replicaCount: 1
+  port: 9203
+  javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+  # 健康检查配置
+  probes:
+    enabled: true
+    liveness:
+      path: /actuator/health/liveness
+      initialDelay: 90
+      period: 30
+      timeout: 10
+      failureThreshold: 3
+      successThreshold: 1
+    readiness:
+      path: /actuator/health/readiness
+      initialDelay: 60
+      period: 15
+      timeout: 5
+      failureThreshold: 3
+      successThreshold: 1
+    startup:
+      path: /actuator/health
+      failureThreshold: 30
+      period: 10
+  # 资源限制配置
+  resources:
+    enabled: true
+    requests:
+      memory: "512Mi"
+      cpu: "300m"
+    limits:
+      memory: "1024Mi"
+      cpu: "1000m"
+
+

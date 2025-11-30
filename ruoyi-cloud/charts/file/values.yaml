@@ -1,0 +1,19 @@
+# File Service Configuration
+enable: true
+name: "ruoyi-file"
+svcname: "ruoyi-file"
+image: "192.168.200.85:85/library/ruoyi-file:1"
+replicaCount: 2
+port: 9300
+
+# JVM Configuration
+javaOpts: "-Xms512m -Xmx512m -XX:MaxMetaspaceSize=192m"
+
+# Resource limits
+resources:
+  requests:
+    memory: "1024Mi"
+    cpu: "800m"
+  limits:
+    memory: "2048Mi"
+    cpu: "2000m"

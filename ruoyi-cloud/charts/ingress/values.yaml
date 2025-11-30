@@ -1,0 +1,11 @@
+# Ingress Configuration
+enabled: true
+className: "nginx"
+host: "www.xushi.com"
+secret: "myapp-tls-secret"
+path: "/"
+
+# Service Configuration
+ui:
+  svcname: "ruoyi-ui"
+  port: 81
